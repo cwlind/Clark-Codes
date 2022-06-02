@@ -1,0 +1,11 @@
+function sortTabs() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const tab1 = ss.getSheetByName('tab-1');
+  const tabData = tab1.getRange(2, 1, 4, 2).getValues();
+
+  for (let i=0; i<tabData.length; i++) {
+    ss.getSheetByName(tabData[i][0]).activate();
+    ss.moveActiveSheet(tabData[i][1] +1);
+  }
+  tab1.activate();
+}
